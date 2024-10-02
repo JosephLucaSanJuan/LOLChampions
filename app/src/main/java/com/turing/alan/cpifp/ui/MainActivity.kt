@@ -12,6 +12,13 @@ import com.turing.alan.cpifp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val repository = InMemoryChampionsRepository.getInstance()
+
+    override fun onResume() {
+        super.onResume()
+        val recyclerView = binding.listOfChampions
+        (recyclerView.adapter as ChampionsListAdapter).submitList(repository.getChampions())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,5 +28,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val recyclerView = binding.listOfChampions
+        recyclerView.adapter = ChampionsListAdapter()
+        (recyclerView.adapter as ChampionsListAdapter).submitList(repository.getChampions())
     }
 }

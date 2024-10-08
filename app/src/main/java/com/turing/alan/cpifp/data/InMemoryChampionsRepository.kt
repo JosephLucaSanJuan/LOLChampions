@@ -50,6 +50,10 @@ class InMemoryChampionsRepository private constructor(): ChampionsRepository {
         )
     }
 
+    override fun getOne(id: Int): Champion {
+        TODO("Not yet implemented")
+    }
+
     companion object {
         // Instancia única del repositorio
         @Volatile

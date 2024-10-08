@@ -9,12 +9,12 @@ import coil.load
 import com.turing.alan.cpifp.data.Champion
 import com.turing.alan.cpifp.databinding.ChampionListBinding
 
-class ChampionsListAdapter():ListAdapter<Champion, ChampionsListAdapter.ChampionsViewHolder>(ChampionDiffCallback) {
+class ChampionsListAdapter(toItemDetail:(Champion)->Unit):ListAdapter<Champion, ChampionsListAdapter.ChampionsViewHolder>(ChampionDiffCallback) {
     class ChampionsViewHolder(private val binding: ChampionListBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(champion:Champion){
             binding.championName.text = champion.name
             binding.championTitle.text = champion.title
-            binding.championLore.text = champion.lore
+            //binding.championLore.text = champion.lore
             binding.championImage.load(champion.imageUrl)
         }
     }

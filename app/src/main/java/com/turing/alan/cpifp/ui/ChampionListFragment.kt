@@ -33,6 +33,12 @@ class ChampionListFragment : Fragment() {
         (rv.adapter as ChampionsListAdapter).submitList(repository.getChampions())
     }
 
+    override fun onResume() {
+        super.onResume()
+        val recyclerView = binding.listOfChampions
+        (recyclerView.adapter as ChampionsListAdapter).submitList(repository.getChampions())
+    }
+
     private fun toItemDetail(champion: Champion){
         val action = ChampionListFragmentDirections.actionChampionListFragmentToChampionDetailFragment(champion.id)
         findNavController().navigate(action)
